@@ -1,0 +1,10 @@
+body {
+  background-color: pink;
+  text-align: center;
+}
+
+.game {
+  width:100px;
+  height: 80px;
+  margin: 3px;
+}
