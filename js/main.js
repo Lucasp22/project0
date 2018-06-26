@@ -8,7 +8,20 @@ const board = [" ", " ", " ",
 ////Global variables
 
 let playerOneIsNext = true;
-let numberOfPlay = 9;
+let numberOfPlay = 0;
+let boxId = 0;
+//////////////
+const updateBoard = function() {
+  $('#0').html(board[0]);
+  $('#1').html(board[1]);
+  $('#2').html(board[2]);
+  $('#3').html(board[3]);
+  $('#4').html(board[4]);
+  $('#5').html(board[5]);
+  $('#6').html(board[6]);
+  $('#7').html(board[7]);
+  $('#8').html(board[8]);
+};
 
 /////playX turn
 const playX = function(index){
@@ -57,21 +70,33 @@ const winnerFx = function (){
 }
 //////player turn function
 const playTurn = function(index){
+  if(board[index] === " "){
   if (playerOneIsNext === true){
     playX(index);
-    numberOfPlay += 1 ///// counting turns
-    playerOneIsNext = false;
-  } else{
-    playO(index);
-    numberOfPlay += 1 //// counting turns
-    playerOneIsNext = true;
-  }
+       numberOfPlay += 1 ///// counting turns
+       playerOneIsNext = false;
+    } else{
+      playO(index);
+      numberOfPlay += 1 //// counting turns
+      playerOneIsNext = true;
+    }
   winnerFx()
   draw()
+  updateBoard()
   }
+}
 //////////// draw function///////
 const draw = function(){
   if ( (numberOfPlay >= 9) && (winnerFx() !== true) ){
     console.log("Draw");
   }
 }
+$(document).ready(function () {/////////document ready
+///////////fx target////
+$('.box').click(function(){
+  boxId = event.target.id; /// returns a number
+  playTurn(boxId);
+});
+///////
+});////////document ready//////
+/////////////////
