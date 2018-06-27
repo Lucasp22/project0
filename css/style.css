@@ -28,8 +28,8 @@ footer {
 h1 {
   text-align: center;
 }
-header
-{
+header{
+  text-align: center;
   grid-area: header;
   background-color: #1995ad;
 }
@@ -42,18 +42,14 @@ header
   text-align: center;
   background-color: rgba(0, 0, 0, 0.5);
 }
-.closeBtn{
-  color:#ccc;
-  margin-left: 80%;
-  font-size:30px;
-  color:#fff;
-}
+
 #Reset{
-  color: #000;
+  color: #ccc;
   margin-left: 70%;
   font-size: 36px;
+  color:#fff;
 }
-.closeBtn:hover,.closeBtn:focus{
+#Reset:hover,.closeBtn:focus{
   color:#000;
   text-decoration: none;
   cursor:pointer;
