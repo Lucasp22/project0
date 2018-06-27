@@ -1,16 +1,11 @@
-console.log(`Hello Lucas`)
-
-
 const board = [" ", " ", " ",
               " ", " ", " ",
               " ", " ", " "];
-
 ////Global variables
-
 let playerOneIsNext = true;
 let numberOfPlay = 0;
 let boxId = 0;
-//////////////
+//////////////PLAYING/////
 const updateBoard = function() {
   $('#0').html(board[0]);
   $('#1').html(board[1]);
@@ -22,12 +17,10 @@ const updateBoard = function() {
   $('#7').html(board[7]);
   $('#8').html(board[8]);
 };
-
 /////playX turn
 const playX = function(index){
 board[index]= "X";
 }
-
 ///// playO function
 const playO = function (index){
   board[index] = "O";
@@ -35,35 +28,37 @@ const playO = function (index){
 /////////Check for a winner Fx////
 const winnerFx = function (){
   if (board[ 0 ] === board[ 1 ] && board[ 1 ] === board[ 2 ] && board[ 0 ] != " ") {
-  console.log(`${ board[ 0 ] } winner`);
+  $('.hidden').show();
+  $('#notification').html(`${ board[ 0 ] } is the winner!!!!`)
   return true;
 
 }else if (board[ 3 ] === board[ 4 ] && board[ 4 ] === board[ 5 ] && board[ 3 ] != " ") {
-  console.log(`${ board[ 3 ] } winner`);
+  $('.hidden').show();
   return true;
 
 }else if (board[ 6 ] === board[ 7 ] && board[ 7 ] === board[ 8 ] && board[ 6 ] != " ") {
-  console.log(`${ board[ 6 ] } winner`);
+  $('.hidden').show();
   return true;
 
 }else if (board[ 0 ] === board[ 3 ] && board[ 3 ] === board[ 6 ] && board[ 0 ] != " ") {
-  console.log(`${ board[ 0 ] } winner`);
+  $('.hidden').show();
   return true;
 
 }else if (board[ 1 ] === board[ 4 ] && board[ 4 ] === board[ 7 ] && board[ 1 ] != " ") {
-  console.log(`${ board[ 1 ] } winner`);
+  $('.hidden').show();
   return true;
 
 }else if (board[ 2 ] === board[ 5 ] && board[ 5 ] === board[ 8 ] && board[ 2 ] != " ") {
-  console.log(`${ board[ 2 ] } winner`);
+  $('.hidden').show();
   return true;
 
 }else if (board[ 6 ] === board[ 4 ] && board[ 4 ] === board[ 2 ] && board[ 6 ] != " ") {
-  console.log(`${ board[ 6 ] } winner`);
+  $('.hidden').show();
   return true;
 
 }else if (board[ 0 ] === board[ 4 ] &&  board[ 4 ] === board[ 8 ] && board[ 0 ] != " "){
-  console.log(`${ board[ 0 ] } winner`);
+  $('.hidden').show();
+
   return true;
 
 }
@@ -85,10 +80,24 @@ const playTurn = function(index){
   updateBoard()
   }
 }
+////////////resetFx/////
+
+const resetFx = function (){
+  if((winnerFx() === true) || (draw() === true) ){
+  }
+    for (var i = 0; i < board.length; i++) {
+     board[i] = " "
+  }
+  updateBoard()
+}
+
+
 //////////// draw function///////
 const draw = function(){
   if ( (numberOfPlay >= 9) && (winnerFx() !== true) ){
+    $('.hidden').removeClass('hidden');
     console.log("Draw");
+    return true;
   }
 }
 $(document).ready(function () {/////////document ready
@@ -97,6 +106,12 @@ $('.box').click(function(){
   boxId = event.target.id; /// returns a number
   playTurn(boxId);
 });
-///////
+///////listinner fx for button
+$('#Reset').on('click', function() {
+  resetFx() // reset the board and screen
+  $('.hidden').hide();
+})
+
+
+
 });////////document ready//////
-/////////////////
