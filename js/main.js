@@ -1,4 +1,3 @@
-console.log("heloo");
 
 const board = [" ", " ", " ",
                 " ", " ", " ",
@@ -351,12 +350,8 @@ const defFx = function() {
   }
   return true;
 }
-
 ////////////resetFx/////
-
 const resetFx = function() {
-  // if((winnerFx() === true) || (draw() === true) ){
-  // }
   for (var i = 0; i < board.length; i++) {
     board[i] = ":-)"
   }
@@ -366,8 +361,6 @@ const resetFx = function() {
     board[i] = " "
   }
 }
-
-
 //////////// draw function///////
 const draw = function() {
   if ((numberOfPlay >= 9) && (winnerFx() !== true)) {
@@ -388,5 +381,4 @@ $(document).ready(function() { /////////document ready
     resetFx() // reset the board and screen
     $('.hidden').hide();
   })
-
 }); ////////document ready//////
